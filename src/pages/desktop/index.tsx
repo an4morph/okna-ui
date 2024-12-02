@@ -1,6 +1,6 @@
-import { Applicatiton } from './features/application'
+import { Applicatiton } from '../../features/application'
 
-export const App = () => {
+export const DesktopPage = () => {
   return (
     <div className="w-screen h-screen relative">
       <div className="absolute-full bg-sky-100">background</div>
