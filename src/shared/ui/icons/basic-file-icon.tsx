@@ -1,4 +1,4 @@
-import { SvgProps } from '../../types/common'
+import { SvgProps } from '@/shared/types/common'
 
 export const BasicFileIcon = (props: SvgProps) => {
   return (
