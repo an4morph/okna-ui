@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { ApplicationsLayerContext } from '../model/context'
-import { useList } from '../../../shared/lib/hooks/useList'
+import { useList } from '@/shared/lib/hooks/useList'
 import { ApplicationItem } from '../model/types'
 
 interface Props {

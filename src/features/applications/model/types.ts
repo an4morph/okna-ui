@@ -1,4 +1,4 @@
-import { LAYERS } from "../../../shared/config/layers"
+import { LAYERS } from "@/shared/config/layers"
 
 export interface ApplicationItem {
   id: string

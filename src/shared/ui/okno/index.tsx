@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { SvgProps } from '../../types/common'
 import { Button } from '../button'
 import { BasicFileIcon } from '../icons/basic-file-icon'
-import { cn } from '../../lib/tw'
+import { cn } from '../../lib/utils/tw'
 
 interface Props {
   name?: string

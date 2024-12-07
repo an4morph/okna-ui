@@ -1,9 +1,9 @@
-import { Applicatiton } from './features/application'
+import { Applicatiton } from '@/features/application'
 
 export const App = () => {
   return (
     <div className="w-screen h-screen relative">
-      <div className="absolute-full bg-sky-100">background</div>
+      {/* <div className="absolute-full bg-sky-100">background</div> */}
 
       <div className="centered gap-6">
         <Applicatiton name="hello_world.exe">Hello world App</Applicatiton>

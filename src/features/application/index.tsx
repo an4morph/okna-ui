@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react'
-import { Shortcut } from '../../shared/ui/shortcut'
-import { Okno } from '../../shared/ui/okno'
-import { SvgProps } from '../../shared/types/common'
-import { BasicFileIcon } from '../../shared/ui/icons/basic-file-icon'
+import { Shortcut } from '@/shared/ui/shortcut'
+import { Okno } from '@/shared/ui/okno'
+import { SvgProps } from '@/shared/types/common'
+import { BasicFileIcon } from '@/shared/ui/icons/basic-file-icon'
 
 interface Props {
   children: ReactNode
