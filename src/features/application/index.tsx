@@ -13,7 +13,8 @@ interface Props {
 }
 
 export const Applicatiton = ({ children, id, name = 'Untitled', icon = BasicFileIcon }: Props) => {
-  const { appList, open, close } = useApplicationsLayerContext()
+  const { appList, open, close, makeActive, activeId } = useApplicationsLayerContext()
+  const isActive = activeId === id
 
   return (
     <>
@@ -22,9 +23,12 @@ export const Applicatiton = ({ children, id, name = 'Untitled', icon = BasicFile
       <Okno
         order={appList.findIndex((i) => i === id)}
         isOpen={appList.findIndex((i) => i === id) !== -1}
-        onClose={() => close(id)}
+        onClose={() => {
+          close(id)
+        }}
         name={name}
         icon={icon}
+        onClick={() => !isActive && makeActive(id)}
       >
         {children}
       </Okno>

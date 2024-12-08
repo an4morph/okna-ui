@@ -12,6 +12,7 @@ interface Props {
   isOpen?: boolean
   onClose?: () => void
   order?: number
+  onClick?: () => void
 }
 
 export const Okno = ({
@@ -20,10 +21,12 @@ export const Okno = ({
   children,
   isOpen = false,
   onClose,
+  onClick,
   order = 0,
 }: Props) => {
   const Icon = icon
-  const handleClose = () => {
+  const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    e.stopPropagation()
     if (onClose) onClose()
   }
 
@@ -33,6 +36,7 @@ export const Okno = ({
         'shadow-lg border border-slate-700 absolute-center',
         isOpen ? 'block' : 'hidden'
       )}
+      onClick={onClick}
       style={isOpen ? getZIndexStyle({ layerName: LAYERS.apps, order }) : {}}
     >
       <div className="bg-slate-200 border-b border-slate-700 flex p-1 items-center">

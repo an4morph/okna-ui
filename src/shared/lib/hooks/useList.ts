@@ -49,7 +49,7 @@ export function useList<T>(initialList: T[] = []): [T[], UseListActions<T>] {
     let removedItem: T | undefined
     setList((prevList) => {
       if (index < 0 || index >= prevList.length) {
-        console.warn(`Index ${index} is out of bounds`)
+        console.warn(`[useList/removeAt]: Index ${index} is out of bounds`)
         return prevList
       }
       const newList = [...prevList]
@@ -67,7 +67,7 @@ export function useList<T>(initialList: T[] = []): [T[], UseListActions<T>] {
         toIndex < 0 ||
         toIndex >= prevList.length
       ) {
-        console.warn(`[useList]: Index out of bounds: from ${fromIndex} to ${toIndex}`)
+        console.warn(`[useList/move]: Index out of bounds: from ${fromIndex} to ${toIndex}`)
         return prevList
       }
 
