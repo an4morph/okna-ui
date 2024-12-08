@@ -1,19 +1,10 @@
-import { createContext, useContext } from 'react'
-import { ApplicationItem } from './types'
+import { createContext } from 'react'
 
 export interface ContextType {
-  appList: ApplicationItem[]
-  open: (item: ApplicationItem) => void
+  appList: string[]
+  open: (id: string) => void
   close: (id: string) => void
   makeActive: (id: string) => void
 }
 
 export const ApplicationsLayerContext = createContext<ContextType | undefined>(undefined)
-
-export const useApplicationsLayerContext = () => {
-  const context = useContext(ApplicationsLayerContext)
-  if (context === undefined) {
-    throw new Error('useLayersContext must be used within an DashboardPageProvider')
-  }
-  return context
-}

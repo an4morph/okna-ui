@@ -3,6 +3,7 @@ import { SvgProps } from '@/shared/types/common'
 import { Button } from '@/shared/ui/button'
 import { BasicFileIcon } from '@/shared/ui/icons/basic-file-icon'
 import { cn } from '@/shared/lib/utils/tw'
+import { getZIndexStyle, LAYERS } from '@/shared/config/layers'
 
 interface Props {
   name?: string
@@ -10,6 +11,7 @@ interface Props {
   children: ReactNode
   isOpen?: boolean
   onClose?: () => void
+  order?: number
 }
 
 export const Okno = ({
@@ -18,6 +20,7 @@ export const Okno = ({
   children,
   isOpen = false,
   onClose,
+  order = 0,
 }: Props) => {
   const Icon = icon
   const handleClose = () => {
@@ -30,6 +33,7 @@ export const Okno = ({
         'shadow-lg border border-slate-700 absolute-center',
         isOpen ? 'block' : 'hidden'
       )}
+      style={isOpen ? getZIndexStyle({ layerName: LAYERS.apps, order }) : {}}
     >
       <div className="bg-slate-200 border-b border-slate-700 flex p-1 items-center">
         <div className="flex gap-6 flex-1">
