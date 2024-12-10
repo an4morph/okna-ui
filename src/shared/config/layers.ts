@@ -24,21 +24,19 @@ function createLayerOrder(): Record<LAYERS, number> {
 
 export const config_layers = createLayerOrder()
 
-interface ZIndexFuncParams {
+export interface ZIndexFuncParams {
   layerName: LAYERS
   order?: number
 }
 
 export const getZIndexByLayer = ({ layerName, order = 0 }: ZIndexFuncParams) => {
   try {
-    if (order < 0 || order >= mult) throw new Error('Invalid order for element')
+    if (order < 0 || order >= mult) {
+      throw new Error('[layers/getZIndexByLayer] Invalid order for element')
+    }
     return config_layers[layerName] + order
   } catch (error) {
     console.error(error)
     return 0
   }
 }
-
-export const getZIndexStyle = (attrs: ZIndexFuncParams) => ({
-  zIndex: getZIndexByLayer(attrs),
-})

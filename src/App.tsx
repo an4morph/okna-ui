@@ -7,7 +7,7 @@ export const App = () => {
       <div className="w-screen h-screen relative">
         <div className="centered gap-6">
           <Applicatiton id="1" name="hello_world.exe">
-            Hello world App
+            Hello world App Hello world App
           </Applicatiton>
           <Applicatiton id="2" name="contacts.exe">
             <ul>
