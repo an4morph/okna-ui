@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { SvgProps } from '@/shared/types/common'
 import { Button } from '@/shared/ui/button'
 import { BasicFileIcon } from '@/shared/ui/icons/basic-file-icon'
@@ -31,18 +31,25 @@ export const Okno = ({
   height = '70%',
 }: Props) => {
   const Icon = icon
+  const [isAnimated, setAnimated] = useState<'open' | 'closed' | null>(null)
+  console.log('isAnimated:', isAnimated)
+
   const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.stopPropagation()
+    setAnimated('closed')
     if (onClose) onClose()
   }
+
+  useEffect(() => {
+    if (isOpen) setAnimated('open')
+  }, [isOpen])
 
   return (
     <div
       className={cn(
-        'shadow-lg border border-slate-700 transition-all duration-[0.5s]',
-        isOpen
-          ? 'opacity-100 !translate-x-0 visible'
-          : 'opacity-0 invisible !translate-x-[-200px] pointer-events-none'
+        'shadow-lg border border-slate-700 invisible',
+        isAnimated === 'open' && 'animate-[okno-open_1s_forwards]',
+        isAnimated === 'closed' && 'animate-[okno-close_1s_forwards]'
       )}
       style={{
         ...(isOpen ? StyleUtils.zIndex({ layerName: LAYERS.apps, order }) : {}),
