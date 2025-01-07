@@ -1,11 +1,12 @@
-import { ReactNode } from 'react'
+import { ReactNode, useRef } from 'react'
 import { SvgProps } from '@/shared/types/common'
 import { Button } from '@/shared/ui/button'
 import { BasicFileIcon } from '@/shared/ui/icons/basic-file-icon'
 import { cn } from '@/shared/lib/utils/tw'
-import { LAYERS } from '@/shared/config/layers'
+import { getZIndexByLayer, LAYERS } from '@/shared/config/layers'
 import { StyleUtils } from '@/shared/lib/utils/styles'
 import { motion, AnimatePresence } from 'motion/react'
+import { type Dimensions } from '@/shared/lib/hooks/useDimensions'
 
 interface Props {
   name?: string
@@ -17,6 +18,7 @@ interface Props {
   onClick?: () => void
   width?: string
   height?: string
+  shortcutDimensions: Dimensions | null
 }
 
 export const Okno = ({
@@ -27,29 +29,52 @@ export const Okno = ({
   onClose,
   onClick,
   order = 0,
+  shortcutDimensions,
 
   width = '65%',
   height = '65%',
 }: Props) => {
   const Icon = icon
+  //const initalOrder = useRef(order)
 
   const handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e.stopPropagation()
     if (onClose) onClose()
   }
 
+  if (order >= 0)
+    console.log('aaa', order, getZIndexByLayer({ layerName: LAYERS.apps, order }) % 100)
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
           key="modal"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          className={cn('shadow-lg border border-slate-700 flex flex-col')}
+          initial={{
+            scale: 0,
+            originX: 0,
+            originY: 0,
+            left: shortcutDimensions?.center.x || 0,
+            top: shortcutDimensions?.center.y || 0,
+          }}
+          transition={{ duration: 0.4, origin: 'center' }}
+          animate={{
+            scale: 1,
+            left: `calc(50% - (${height} / 2))`,
+            top: `calc(50% - (${width} / 2))`,
+          }}
+          exit={{
+            scale: 0,
+            originX: 0,
+            originY: 0,
+            left: shortcutDimensions?.center.x || 0,
+            top: shortcutDimensions?.center.y || 0,
+          }}
+          className={cn('shadow-lg border border-slate-700 flex flex-col absolute')}
           style={{
+            width,
+            height,
             ...(isOpen ? StyleUtils.zIndex({ layerName: LAYERS.apps, order }) : {}),
-            ...StyleUtils.centerAbsolute({ width, height }),
           }}
           onClick={onClick}
         >

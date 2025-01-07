@@ -6,7 +6,7 @@ export const App = () => {
     <ApplicationLayerProvider>
       <div className="w-screen h-screen relative">
         <div className="centered gap-6">
-          <Applicatiton id="1" name="hello_world.exe" width="70%" height="70%">
+          <Applicatiton id="1" name="hello_world.exe">
             Hello world App Hello world App
           </Applicatiton>
           <Applicatiton id="2" name="contacts.exe">
