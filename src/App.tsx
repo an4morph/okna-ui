@@ -1,12 +1,12 @@
 import { Applicatiton } from '@/features/application'
-import { ApplicationLayerProvider } from './features/applications'
+import { ApplicationLayerProvider } from '@/features/applications'
 
 export const App = () => {
   return (
     <ApplicationLayerProvider>
       <div className="w-screen h-screen relative">
         <div className="centered gap-6">
-          <Applicatiton id="1" name="hello_world.exe">
+          <Applicatiton id="1" name="hello_world.exe" width="70%" height="70%">
             Hello world App Hello world App
           </Applicatiton>
           <Applicatiton id="2" name="contacts.exe">

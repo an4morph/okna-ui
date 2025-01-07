@@ -10,9 +10,18 @@ interface Props {
   name?: string
   id: string
   icon?: (props: SvgProps) => JSX.Element
+  width?: string
+  height?: string
 }
 
-export const Applicatiton = ({ children, id, name = 'Untitled', icon = BasicFileIcon }: Props) => {
+export const Applicatiton = ({
+  children,
+  id,
+  name = 'Untitled',
+  icon = BasicFileIcon,
+  width,
+  height,
+}: Props) => {
   const { appList, open, close, makeActive, activeId } = useApplicationsLayerContext()
   const isActive = activeId === id
 
@@ -29,6 +38,8 @@ export const Applicatiton = ({ children, id, name = 'Untitled', icon = BasicFile
         name={name}
         icon={icon}
         onClick={() => !isActive && makeActive(id)}
+        width={width}
+        height={height}
       >
         {children}
       </Okno>
