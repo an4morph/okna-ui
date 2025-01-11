@@ -13,8 +13,19 @@ export interface Dimensions {
   }
 }
 
-export const useDimensions = (ref: RefObject<HTMLElement>): Dimensions | null => {
-  const [dimensions, setDimensions] = useState<Dimensions | null>(null)
+export const useDimensions = (ref: RefObject<HTMLElement>): Dimensions => {
+  const [dimensions, setDimensions] = useState<Dimensions>({
+    width: 0,
+    height: 0,
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    center: {
+      x: 0,
+      y: 0,
+    },
+  })
 
   const updateDimensions = useCallback(() => {
     if (ref.current) {

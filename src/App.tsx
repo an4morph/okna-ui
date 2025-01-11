@@ -1,5 +1,6 @@
 import { Applicatiton } from '@/features/application'
 import { ApplicationLayerProvider } from '@/features/applications'
+import { motion } from 'motion/react'
 
 export const App = () => {
   return (

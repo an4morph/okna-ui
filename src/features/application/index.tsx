@@ -30,7 +30,7 @@ export const Applicatiton = ({
   const dimensions = useDimensions(shortcutRef)
 
   return (
-    <>
+    <div>
       <Shortcut onDblClick={() => open(id)} name={name} icon={icon} ref={shortcutRef} />
       <div className="bg-slate-200 size-[200px]">
         <pre>{JSON.stringify(dimensions, null, 2)}</pre>
@@ -51,6 +51,6 @@ export const Applicatiton = ({
       >
         {children}
       </Okno>
-    </>
+    </div>
   )
 }
